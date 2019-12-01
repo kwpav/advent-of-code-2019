@@ -1,0 +1,45 @@
+* Advent of Code 2019 Solutions
+My solutions for [[https://adventofcode.com/2019][Advent of Code 2019]].
+
+Currently using =JavaScript=.
+
+** Getting Started
+Get started by installing the packages:
+#+BEGIN_SRC sh
+  npm install
+#+END_SRC
+
+** Testing
+Run the tests using =jest=.
+
+A single run:
+#+BEGIN_SRC sh
+  npm run test
+#+END_SRC
+
+Or with with =--watch=:
+#+BEGIN_SRC sh
+  npm run test-watch
+#+END_SRC
+
+** Linting
+Using =eslint= with =airbnb= rules.
+
+Run the linter:
+#+BEGIN_SRC sh
+  npm run lint
+#+END_SRC
+
+This will run =eslint --fix= which automatically fixes any issues it finds.
+
+** Project Structure
+- =src/=
+  - =lib/= - helper functions
+  - =day01/= - day 1 code
+    - =day01.test.js= - tests for part1 and part 2 solutions
+    - =part1.js= - code for the part1 solution
+    - =part2.js= - code for the part 2 solution
+    - =solution.js= - get the solutions using the actual input
+  - =day02/=
+  - =day03/=
+  - etc...
