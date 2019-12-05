@@ -1,5 +1,5 @@
 const findValidPasswords = (numberRange) => (
-  getPasswords(numberRange).filter(isValid)
+  removeDuplicates(getPasswords(numberRange).filter(isValid))
 );
 
 const getPasswords = (numberRange) => {
@@ -17,17 +17,17 @@ const isValid = (password) => (
 );
 
 const decreases = (password) => {
-  const check = (pw, idx) => pw.charAt(idx) > pw.charAt(idx + 1);
+  const check = (pw, idx) => pw[idx] < pw[idx - 1];
   return checkPassword(password, check);
 };
 
 const hasDouble = (password) => {
-  const check = (pw, idx) => pw.charAt(idx) === pw.charAt(idx + 1);
+  const check = (pw, idx) => pw[idx] === pw[idx - 1];
   return checkPassword(password, check);
 };
 
 const checkPassword = (password, check) => {
-  for (let i = 0; i < password.length - 1; i += 1) {
+  for (let i = 1; i < password.length; i += 1) {
     if (check(password, i)) {
       return true;
     }
@@ -38,6 +38,8 @@ const checkPassword = (password, check) => {
 const range = (lower, upper) => (
   [...Array(upper).keys()].map((i) => i + lower).toString().replace(/,/g, '')
 );
+
+const removeDuplicates = (arr) => [...new Set(arr)];
 
 exports.findValidPasswords = findValidPasswords;
 exports.isValid = isValid;
