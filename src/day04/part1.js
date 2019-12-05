@@ -1,6 +1,20 @@
-const isValid = (password) => {
-  return !decreases(password) && hasDouble(password);
+const findValidPasswords = (numberRange) => (
+  getPasswords(numberRange).filter(isValid)
+);
+
+const getPasswords = (numberRange) => {
+  const numbers = numberRange;
+  const passwords = [];
+  for (let i = 0; i < numbers.length; i += 6) {
+    const password = numbers.slice(i, i + 6);
+    passwords.push(password);
+  }
+  return passwords;
 };
+
+const isValid = (password) => (
+  !decreases(password) && hasDouble(password)
+);
 
 const decreases = (password) => {
   const spassword = password.toString();
@@ -22,6 +36,8 @@ const hasDouble = (password) => {
   return false;
 };
 
+exports.findValidPasswords = findValidPasswords;
 exports.isValid = isValid;
+exports.getPasswords = getPasswords;
 exports.decreases = decreases;
 exports.hasDouble = hasDouble;
