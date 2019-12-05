@@ -1,5 +1,6 @@
 const part1 = require('./part1');
 const solution = require('./solution');
+const readInput = require('../lib/readInput');
 
 describe('Day 4 Part 1', () => {
   it('should find valid passwords', () => {
@@ -47,12 +48,20 @@ describe('Day 4 Part 1', () => {
   });
 
   it('should generate a range between two numbers', () => {
-    expect(part1.range(1, 20)).toStrictEqual('1234567891011121314151617181920');
+    expect(part1.range(1, 20 + 1)).toStrictEqual('1234567891011121314151617181920');
+  });
+
+  it('should generate a range between two larger numbers', () => {
+    expect(part1.range(13830, 13835 + 1)).toBe('138301383113832138331383413835');
+  });
+
+  it('should generate a range between two larger numbers', () => {
+    expect(part1.range(718090, 718098 + 1)).toBe('718090718091718092718093718094718095718096718097718098');
   });
 });
 
 describe('Day 4 Solutions', () => {
-  it('Part 1 solution should be ???', () => {
-    expect(solution.solvePart1()).toBe(0);
+  it('Part 1 solution should be 1686', () => {
+    expect(solution.solvePart1()).toBe(1686);
   });
 });

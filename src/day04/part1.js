@@ -1,3 +1,5 @@
+// const _ = require('underscore');
+
 const findValidPasswords = (numberRange) => (
   removeDuplicates(getPasswords(numberRange).filter(isValid))
 );
@@ -36,7 +38,7 @@ const checkPassword = (password, check) => {
 };
 
 const range = (lower, upper) => (
-  [...Array(upper).keys()].map((i) => i + lower).toString().replace(/,/g, '')
+  [...Array(upper - lower).keys()].map((i) => i + lower).join('')
 );
 
 const removeDuplicates = (arr) => [...new Set(arr)];
