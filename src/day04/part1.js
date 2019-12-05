@@ -13,31 +13,35 @@ const getPasswords = (numberRange) => {
 };
 
 const isValid = (password) => (
-  !decreases(password) && hasDouble(password)
+  !decreases(password) && hasDouble(password) && password.length === 6
 );
 
 const decreases = (password) => {
-  const spassword = password.toString();
-  for (let i = 0; i < spassword.length - 1; i += 1) {
-    if (spassword.charAt(i) > spassword.charAt(i + 1)) {
+  const check = (pw, idx) => pw.charAt(idx) > pw.charAt(idx + 1);
+  return checkPassword(password, check);
+};
+
+const hasDouble = (password) => {
+  const check = (pw, idx) => pw.charAt(idx) === pw.charAt(idx + 1);
+  return checkPassword(password, check);
+};
+
+const checkPassword = (password, check) => {
+  for (let i = 0; i < password.length - 1; i += 1) {
+    if (check(password, i)) {
       return true;
     }
   }
   return false;
 };
 
-const hasDouble = (password) => {
-  const spassword = password.toString();
-  for (let i = 0; i < spassword.length - 1; i += 1) {
-    if (spassword.charAt(i) === spassword.charAt(i + 1)) {
-      return true;
-    }
-  }
-  return false;
-};
+const range = (lower, upper) => (
+  [...Array(upper).keys()].map((i) => i + lower).toString().replace(/,/g, '')
+);
 
 exports.findValidPasswords = findValidPasswords;
 exports.isValid = isValid;
 exports.getPasswords = getPasswords;
 exports.decreases = decreases;
 exports.hasDouble = hasDouble;
+exports.range = range;
