@@ -1,6 +1,6 @@
 const part1 = require('./part1');
+const part2 = require('./part2');
 const solution = require('./solution');
-const readInput = require('../lib/readInput');
 
 describe('Day 4 Part 1', () => {
   it('should find valid passwords', () => {
@@ -57,6 +57,20 @@ describe('Day 4 Part 1', () => {
 
   it('should generate a range between two larger numbers', () => {
     expect(part1.range(718090, 718098 + 1)).toBe('718090718091718092718093718094718095718096718097718098');
+  });
+});
+
+describe('Day 4 Part 2', () => {
+  it('111111 contains more than a double', () => {
+    expect(part2.hasOnlyDouble('111111')).toBe(false);
+  });
+
+  it('223334 contains more than a double', () => {
+    expect(part2.hasOnlyDouble('223334')).toBe(false);
+  });
+
+  it('556677 contains only doubles', () => {
+    expect(part2.hasOnlyDouble('556677')).toBe(true);
   });
 });
 
