@@ -47,3 +47,4 @@ exports.getPasswords = getPasswords;
 exports.decreases = decreases;
 exports.hasDouble = hasDouble;
 exports.range = range;
+exports.removeDuplicates = removeDuplicates;

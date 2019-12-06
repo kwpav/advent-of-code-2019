@@ -61,21 +61,53 @@ describe('Day 4 Part 1', () => {
 });
 
 describe('Day 4 Part 2', () => {
-  it('111111 contains more than a double', () => {
-    expect(part2.hasOnlyDouble('111111')).toBe(false);
+  it('111111 contains only doubles', () => {
+    expect(part2.hasOnlyDouble('111111')).toBe(true);
   });
 
-  it('223334 contains more than a double', () => {
+  it('223334 contains not only doubles', () => {
     expect(part2.hasOnlyDouble('223334')).toBe(false);
   });
 
   it('556677 contains only doubles', () => {
     expect(part2.hasOnlyDouble('556677')).toBe(true);
   });
+
+  it('111111 is a valid password', () => {
+    expect(part2.isValid('111111')).toBe(true);
+  });
+
+  it('556677 is a valid password', () => {
+    expect(part2.isValid('556677')).toBe(true);
+  });
+
+  it('112233 is a valid password', () => {
+    expect(part2.isValid('112233')).toBe(true);
+  });
+
+  it('123444 is an invalid password', () => {
+    expect(part2.isValid('')).toBe(false);
+  });
+
+  it('111122 is a valid password', () => {
+    expect(part2.isValid('111122')).toBe(true);
+  });
+
+  it('122345 is an invalid password', () => {
+    expect(part2.isValid('122345')).toBe(false);
+  });
+
+  it('467799 is an invalid password', () => {
+    expect(part2.isValid('467799')).toBe(false);
+  });
 });
 
 describe('Day 4 Solutions', () => {
   it('Part 1 solution should be 1686', () => {
     expect(solution.solvePart1()).toBe(1686);
+  });
+
+  it('Part 2 solution should be ???', () => {
+    expect(solution.solvePart2()).toBe(0);
   });
 });
