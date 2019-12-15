@@ -1,5 +1,4 @@
 import IntcodeComputer from './IntcodeComputer';
-import { solvePart1, solvePart2 } from './solution';
 
 describe('Day 5 Part 1', () => {
   it('The program 3,0,4,0,99 outputs whatever it gets as input (1), then halts', () => {
@@ -58,7 +57,8 @@ describe('Day 5 Part 1', () => {
 
   it('3,12,6,12,15,1,13,14,13,4,13,99,-1,0,1,9 (using position mode) that take an input, then output 0 if the input was zero or 1 if the input was non-zero:',
     () => {
-      const computer = new IntcodeComputer([3, 12, 6, 12, 15, 1, 13, 14, 13, 4, 13, 99, -1, 0, 1, 9]);
+      const computer = new IntcodeComputer([3, 12, 6, 12, 15, 1, 13, 14,
+        13, 4, 13, 99, -1, 0, 1, 9]);
       computer.input = 1;
       computer.run();
       expect(computer.outputs).toStrictEqual([1]);
@@ -87,14 +87,4 @@ describe('The Intcode computer should run the same as Day 2', () => {
       expect(computer.run()).toStrictEqual(expected);
     },
   );
-});
-
-describe('Solution', () => {
-  it('part1', () => {
-    expect(solvePart1()).toStrictEqual([0, 0, 0, 0, 0, 0, 0, 0, 0, 13285749]);
-  });
-
-  it('part2', () => {
-    expect(solvePart2()).toStrictEqual([5000972]);
-  });
 });
