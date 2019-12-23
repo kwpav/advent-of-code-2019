@@ -55,10 +55,10 @@ export default class IntcodeComputer {
         break;
       case 8:
         this.equalsOp();
-      break;
-    case 9:
-      this.adjustRelBaseOp();
-      break;
+        break;
+      case 9:
+        this.adjustRelBaseOp();
+        break;
       case 99:
         this.haltOp();
         break;
@@ -93,12 +93,6 @@ export default class IntcodeComputer {
   }
 
   outputOp() {
-    // const instruction = this.memory.slice(this.pointer, this.pointer + 2);
-    // let out = this.memory[instruction[1]];
-    // if (instruction[0].toString().length > 1) { // check for modes
-    //   const modes = this.memory[this.pointer].toString().split('').reverse();
-    //   out = modes[2] === '1' ? instruction[1] : this.memory[instruction[1]];
-    // }
     const out = this.getOperands(1)[0];
     this.outputs.push(out);
     this.pointer += 2;
@@ -139,6 +133,10 @@ export default class IntcodeComputer {
     this.pointer += 2;
   }
 
+  haltOp() {
+    this.halted = true;
+  }
+
   getOperands(size) {
     const operands = [];
     const modes = this.memory[this.pointer].toString().split('').reverse();
@@ -153,15 +151,8 @@ export default class IntcodeComputer {
         operands[i] = this.memory[this.memory[pos]];
       }
     }
-    return operands;
-  }
-
-  increaseMemory(size) {
-    this.memory.length += size;
-    this.memory.fill(0, this.memory.length, size);
-  }
-
-  haltOp() {
-    this.halted = true;
+    return operands.map((operand) => (
+      operand === undefined ? 0 : operand
+    ));
   }
 }
