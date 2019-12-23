@@ -140,6 +140,7 @@ export default class IntcodeComputer {
   getOperands(size) {
     const operands = [];
     const modes = this.memory[this.pointer].toString().split('').reverse();
+
     for (let i = 0; i < size; i += 1) {
       const mode = Number(modes[i + 2]);
       const pos = this.pointer + i + 1;
@@ -151,6 +152,7 @@ export default class IntcodeComputer {
         operands[i] = this.memory[this.memory[pos]];
       }
     }
+
     return operands.map((operand) => (
       operand === undefined ? 0 : operand
     ));
